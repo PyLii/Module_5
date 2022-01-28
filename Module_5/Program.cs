@@ -5,9 +5,9 @@ namespace Module_5
     class Program
     {
 
-       static (string name, string surname, int Age, string Pet) UserData() 
+       static (string name, string surname, int Age, bool Pet) UserData() 
         {
-            (string Name, string Surname, int Age, string Pet) anketa;
+            (string Name, string Surname, int Age, bool Pet) anketa;
 
             Console.WriteLine("Enter your name: ");
             anketa.Name = Console.ReadLine();
@@ -25,14 +25,43 @@ namespace Module_5
             } while (DataChek(agestr, out ageint));
 
             anketa.Age = ageint;
-            
-            Console.WriteLine("Do you have pets (Yes/No): ");
-            anketa.Pet = Console.ReadLine();
 
-           
+            string petstr;
+            int petnum;
+
+            Console.WriteLine("Do you have pets (Yes/No): ");
+            petstr = Console.ReadLine();
+
+            if (petstr == "Yes")
+            {
+                anketa.Pet = true;
+                Console.WriteLine("How much pets do you have");
+                petnum = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter nicknames");
+                CreateArrayPets(petnum);
+            }
+            else 
+            {
+                anketa.Pet = false;
+            }
             return anketa;
 
         }
+
+        static string[] CreateArrayPets(int num) 
+        {
+            var pets = new string[num];
+
+            for (int i = 0; i < num; i++)
+            {
+                pets[i] = Console.ReadLine();
+            }
+
+            return pets;
+        }
+
+
 
               
         static bool DataChek(string number, out int corrnumber) 
@@ -42,13 +71,13 @@ namespace Module_5
                 if (intnum > 0) 
                 {
                     corrnumber = intnum;
-                    return true;
+                    return false;
                 }
             }
             
             {
                 corrnumber = 0;
-                return false;
+                return true;
             }
         }
 
