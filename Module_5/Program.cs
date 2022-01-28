@@ -5,9 +5,9 @@ namespace Module_5
     class Program
     {
 
-       static (string name, string surname, int Age, bool Pet) UserData() 
+       static (string Name, string Surname, int Age, bool Pet, int Favcolors) UserData() 
         {
-            (string Name, string Surname, int Age, bool Pet) anketa;
+            (string Name, string Surname, int Age, bool Pet, int Favcolors) anketa;
 
             Console.WriteLine("Enter your name: ");
             anketa.Name = Console.ReadLine();
@@ -45,9 +45,42 @@ namespace Module_5
             {
                 anketa.Pet = false;
             }
+
+
+            int colornum = 0;
+
+            Console.WriteLine("Enter the number of favorite colors ");
+            colornum = Convert.ToInt32(Console.ReadLine());
+
+            if (colornum > 0)
+            {
+                ColorName(colornum);
+            }
+            else 
+            {
+                Console.WriteLine("It's sad");
+                
+            }
+
+            anketa.Favcolors = ColorName (ref colors);
+
             return anketa;
 
         }
+        static string[] ColorName(int colornum)
+        {
+            var colors = new string[colornum];
+
+            for (int i = 0; i < colornum; i++)
+            {
+                colors[i] = Console.ReadLine();
+            }
+
+            return colors;
+        }
+
+
+
 
         static string[] CreateArrayPets(int num) 
         {
@@ -85,10 +118,11 @@ namespace Module_5
 
         static void Main(string[] args)
         {
-         
-            
-            
+             
             UserData();
+
+            //Console.WriteLine(UserData());
+
             Console.ReadKey();
             
         }
