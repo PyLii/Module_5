@@ -134,7 +134,8 @@ namespace Module_5
                 Console.WriteLine("You don't have a pet");
             }
 
-            Console.WriteLine($"Your bumber of favorite color(s) {Favcolors}");
+            Console.WriteLine($"Your number of favorite color(s) {Favcolors}");
+            
 
         }
 
