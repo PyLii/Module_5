@@ -47,8 +47,8 @@ namespace Module_5
             }
 
 
-            int colornum = 0;
-            anketa.Favcolors = 0;
+            int colornum;
+            
 
             Console.WriteLine("Enter the number of favorite colors ");
             colornum = Convert.ToInt32(Console.ReadLine());
@@ -62,23 +62,14 @@ namespace Module_5
                 Console.WriteLine("It's sad");
                 
             }
+            anketa.Favcolors = colornum;
 
-            
 
             return anketa;
 
         }
 
-        static void PrintPerson(ref string Name)
-        
-        {
-            Console.WriteLine("Finish");
-        }
-
-
-
-
-
+   
         static string[] ColorName(int colornum)
         {
             var colors = new string[colornum];
@@ -126,18 +117,33 @@ namespace Module_5
             }
         }
 
+        static void Output() 
+        {
+            var (Name, Surname, Age, Pet, Favcolors) = UserData();
+            
+            Console.WriteLine("Result Output");
+            Console.WriteLine($"Your name is {Name}, your Surname is {Surname} and your age is {Age}.");
+
+            
+            if (Pet == true)
+            {
+                Console.WriteLine("You have a pet");
+            }
+            else
+            {
+                Console.WriteLine("You don't have a pet");
+            }
+
+            Console.WriteLine($"Your bumber of favorite color(s) {Favcolors}");
+
+        }
 
 
         static void Main(string[] args)
         {
-             
-            UserData();
 
-
-            PrintPerson();
-           
-
-
+            Output();
+                
             Console.ReadKey();
             
         }
